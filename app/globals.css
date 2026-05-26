@@ -1,156 +1,107 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --color-bg1: #0f1117;
-  --color-bg2: #171b26;
-  --color-bg3: #1e2330;
-  --color-bg4: #252b3b;
-  --color-b1: #2a3045;
-  --color-b2: #333d55;
-  --color-text: #e8eaf0;
-  --color-text2: #9aa3b8;
-  --color-text3: #5c6580;
-  --color-primary: #4f8ef7;
-  --color-primary-dim: #1e3a6e;
-  --color-primary-text: #a8c8ff;
-  --color-success: #2ecc71;
-  --color-success-dim: #0d3320;
-  --color-warn: #f59e0b;
-  --color-warn-dim: #3a2800;
-  --color-danger: #ef4444;
-  --color-danger-dim: #3a0d0d;
-  --color-sold: #888888;
-  --color-danger-text: #fca5a5;
-  --color-danger-border: #7f1d1d;
-  --color-new-text: #6ee7b7;
-  --color-new-border: #065f46;
-  --color-pro-border: #2a5298;
-  --color-sold-bg: #1a1a1a;
-  --color-sold-border: #333333;
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
-  --spacing: 0.25rem;
+  /* ── Base ── */
+  --color-background: #09090b;              /* zinc-950 · Rich Black */
+  --color-foreground: #fafafa;              /* zinc-50  · Almost White */
+
+  /* ── Surface ── */
+  --color-surface: #18181b;                 /* zinc-900 · Elevated Surface */
+  --color-surface-hover: #52525b;           /* zinc-600 · Hover Gray */
+
+  /* ── Card ── */
+  --color-card: #09090b;                    /* zinc-950 · Rich Black */
+  --color-card-foreground: #fafafa;         /* zinc-50  · Almost White */
+
+  /* ── Popover ── */
+  --color-popover: #09090b;                 /* zinc-950 · Rich Black */
+  --color-popover-foreground: #fafafa;      /* zinc-50  · Almost White */
+
+  /* ── Primary ── */
+  --color-primary: #fafafa;                 /* zinc-50  · Pure Light */
+  --color-primary-foreground: #18181b;      /* zinc-900 · Charcoal Black */
+
+  /* ── Secondary ── */
+  --color-secondary: #27272a;               /* zinc-800 · Zinc Gray */
+  --color-secondary-foreground: #fafafa;    /* zinc-50  · Almost White */
+
+  /* ── Muted ── */
+  --color-muted: #27272a;                   /* zinc-800 · Zinc Gray */
+  --color-muted-foreground: #a1a1aa;        /* zinc-400 · Cool Gray */
+
+  /* ── Accent ── */
+  --color-accent: #27272a;                  /* zinc-800 · Zinc Gray */
+  --color-accent-foreground: #fafafa;       /* zinc-50  · Almost White */
+
+  /* ── Destructive ── */
+  --color-destructive: #7f1d1d;             /* red-900  · Dark Red */
+  --color-destructive-foreground: #fafafa;  /* zinc-50  · Almost White */
+
+  /* ── Border / Input / Ring ── */
+  --color-border: #27272a;                  /* zinc-800 · Border Gray */
+  --color-input: #27272a;                   /* zinc-800 · Input Gray */
+  --color-ring: #d4d4d8;                    /* zinc-300 · Light Zinc */
+
+  /* ── Brand (Blue) ── */
+  --color-brand: #3b82f6;                   /* blue-500 · Brand Blue */
+  --color-brand-light: #1e3a5f;             /* blue-950 · Deep Navy */
+  --color-brand-border: #1d4ed8;            /* blue-700 · Brand Border */
+  --color-brand-foreground: #93c5fd;        /* blue-300 · Light Sky Blue */
+
+  /* ── Success (Green) ── */
+  --color-success: #22c55e;                 /* green-500  · Success Green */
+  --color-success-light: #14532d;           /* green-950  · Dark Forest Green */
+  --color-success-border: #166534;          /* green-800  · Success Border */
+
+  /* ── Warning (Amber) ── */
+  --color-warning: #f59e0b;                 /* amber-500  · Warning Amber */
+  --color-warning-light: #451a03;           /* orange-950 · Dark Brown */
+  --color-warning-border: #92400e;          /* amber-800  · Warning Border */
+
+  /* ── Danger (Red) ── */
+  --color-danger: #ef4444;                  /* red-500    · Danger Red */
+  --color-danger-light: #450a0a;            /* red-950    · Deep Crimson */
+  --color-danger-border: #7f1d1d;           /* red-900    · Danger Border */
+
+  /* ── Overlays ── */
+  --color-overlay-dark: rgba(0, 0, 0, 0.4);
+  --color-overlay-medium: rgba(0, 0, 0, 0.3);
+  --color-overlay-light: rgba(0, 0, 0, 0.12);
+
+  /* ── Map / Grid ── */
+  --color-map-bg-start: #e8f0f8;            /* Light Ice Blue */
+  --color-map-bg-end: #d4e5f5;              /* Pale Blue */
+  --color-map-grid: #93c5fd;                /* blue-300 · Sky Blue */
+
+  /* ── Profile Gradient ── */
+  --color-profile-gradient-start: #1e1b4b;  /* indigo-950 */
+  --color-profile-gradient-end: #1e3a5f;    /* blue-950 · Deep Navy */
+
+  /* ── Neutrals ── */
+  --color-gray-dark: #3f3f46;               /* zinc-700 · Dark Gray */
+  --color-gray-light: #e4e4e7;              /* zinc-200 · Soft Light Gray */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* ── Radius ── */
+  --radius: 0.5rem;
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
+    font-family: 'Geist', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
