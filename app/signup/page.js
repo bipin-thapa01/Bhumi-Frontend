@@ -38,8 +38,10 @@ export default function Signup() {
       return;
     }
 
+    document.getElementById('signup-button').innerText = "Creating...";
+
     try {
-      let res = await fetch('http://127.0.0.1:8000/api/signup', {
+      let res = await fetch('http://localhost:8000/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,18 +57,16 @@ export default function Signup() {
       let data = await res.json();
       console.log(data);
       if (data.success) {
+        document.getElementById('signup-button').innerText = "Create Account";
         showSnackbar({type: "success", title:"Success" ,message: "Your account has been created!"});
         router.push("/login");
       } else {
-        let errors = data.errors;
-        if (errors) {
-          let firstError = Object.values(errors)[0][0];
-          showSnackbar({type: "error", title:"Error" ,message: firstError});
-        } else {
-          showSnackbar({type: "error", title:"Error" ,message: "Something went wrong!"});
-        }
+        document.getElementById('signup-button').innerText = "Create Account";
+        let message = data.message;
+        showSnackbar({type: "error", title:"Error" ,message: message});
       }
     } catch (err) {
+      document.getElementById('signup-button').innerText = "Create Account";
       showSnackbar({type: "error", title:"Error" ,message: err.message});
     }
   }
@@ -76,40 +76,40 @@ export default function Signup() {
       <p className="text-center text-2xl mt-8 font-bold">Welcome to Bhumi</p>
       <div className="flex justify-around rounded-md w-[70%] ml-[15%] mt-6 bg-secondary border-card p-0.5">
         <div className="text-center pl-2 pr-2 pt-1 pb-1 rounded-md cursor-pointer w-[50%]" onClick={() => router.push('/login')}>Log in</div>
-        <div className="text-center w-[50%] pl-2 pr-2 pt-1 pb-1 rounded-md cursor-pointer bg-card" onClick={() => router.push('/signup')}>Sign up</div>
+        <div className="text-center w-[50%] pl-2 pr-2 pt-1 pb-1 rounded-md cursor-pointer bg-brand-foreground text-black" onClick={() => router.push('/signup')}>Sign up</div>
       </div>
       <div className="pt-8 pl-8 pr-8">
         <div className="flex">
           <div className="flex flex-col mr-2">
             <label className=" text-xs">First Name</label>
-            <input type="text" name="firstName" placeholder="Ram" className="px-3 py-1 mt-2 rounded-md w-full border-border border-2 outline-0"></input>
+            <input type="text" name="firstName" placeholder="Ram" className="px-3 py-1 mt-2 rounded-md w-full border-border border-2 outline-0 bg-background"></input>
           </div>
           <div className="flex flex-col">
             <label className=" text-xs">Last Name</label>
-            <input type="text" name="lastName" placeholder="Sharma" className="border-border border-2 px-3 py-1 mt-2 rounded-md outline-0 w-full"></input>
+            <input type="text" name="lastName" placeholder="Sharma" className="border-border border-2 px-3 py-1 mt-2 rounded-md outline-0 w-full bg-background"></input>
           </div>
         </div>
         <div className="flex flex-col mt-4">
           <label className=" text-xs">Email address</label>
-          <input type="email" name="email" className="border-border border-2 px-3 py-1 mt-2 rounded-md outline-0" placeholder="you@example.com"></input>
+          <input type="email" name="email" className="border-border border-2 px-3 py-1 mt-2 rounded-md outline-0 bg-background" placeholder="you@example.com"></input>
         </div>
         <div className="flex flex-col mt-4">
           <label className=" text-xs">Phone</label>
-          <input type="text" name="phone" className="border-border border-2 px-3 py-1 mt-2 rounded-md outline-0" placeholder="98/97XXXXXXXX"></input>
+          <input type="text" name="phone" className="border-border border-2 px-3 py-1 mt-2 rounded-md outline-0 bg-background" placeholder="98/97XXXXXXXX"></input>
         </div>
         <div className="flex flex-col mt-4">
           <label className=" text-xs">Password</label>
-          <input type="password" name="password" placeholder="Min. 8 characters" className="border-border border-2 px-3 py-1 mt-2 rounded-md outline-0"></input>
+          <input type="password" name="password" placeholder="Min. 8 characters" className="border-border border-2 px-3 py-1 mt-2 rounded-md outline-0 bg-background"></input>
         </div>
         <div className="flex flex-col gap-y-2 mt-4">
           <label className=" text-xs">Account Type</label>
-          <select name="accountType" className="rounded-md px-2 border-border border-2 py-1">
+          <select name="accountType" className="rounded-md px-2 border-border border-2 py-1 bg-background">
             <option value={"buyer"}>Buyer</option>
             <option value={"seller"}>Seller</option>
           </select>
         </div>
         <div className="mt-4 flex justify-center">
-          <button className="px-8 py-2 bg-white text-background rounded-md cursor-pointer">Create Account</button>
+          <button id="signup-button" className="px-8 py-2 bg-white text-background rounded-md cursor-pointer">Create Account</button>
         </div>
       </div>
     </form>
