@@ -32,7 +32,6 @@ export default function HomePage() {
           }
         });
         const data2 = await res2.json();
-        console.log(data2);
         if (data2.success) {
           setUser(data2.user);
           setPosts(data2.posts);
