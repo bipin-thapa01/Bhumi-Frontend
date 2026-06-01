@@ -85,7 +85,7 @@ export default function Nav({ isLogin, user, isDashboard }) {
 
                 <div
                   className={`
-                    absolute top-[calc(100%+8px)] right-[-54]
+                    absolute top-[calc(100%+8px)] right-[-30]
                     w-64 bg-surface border border-border rounded-2xl shadow-xl
                     overflow-hidden origin-top-right z-50
                     transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
