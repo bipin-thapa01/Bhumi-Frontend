@@ -41,11 +41,13 @@ export default function HomePage() {
           router.push('/login');
         }
       } else {
-        setIsLogin(false);
+        showSnackbar({ type: 'error', title: "Error", message: "Session time out or error!" });
+        router.push('/login');
       }
       setIsLoading(false);
     } catch (err) {
       showSnackbar({ type: 'error', title: "Error", message: err.message });
+      router.push('/login');
     }
   }
 

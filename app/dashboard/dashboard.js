@@ -63,7 +63,7 @@ export default function Dashboard() {
   }
 
   const fetchStatusData = async () => {
-    const activeListing = posts.length;
+    const activeListing = posts?.length ?? 0;
     let totalViews = 0;
     for (let post in posts) {
       totalViews += post?.views ?? 0;
